@@ -23,8 +23,16 @@ User.findOne({
     },
     include: [
         {
-          model: Post,
-          attributes: ['id', 'title', 'post_url', 'created_at']
+            model: Post,
+            attributes: ['id', 'title', 'post_url', 'created_at']
+        },
+        {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'created_at'],
+            include: {
+                model: Post,
+                atrributes: ['title']
+            }
         },
         {
           model: Post,
